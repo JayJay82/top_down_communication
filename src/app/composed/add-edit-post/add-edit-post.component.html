@@ -1,13 +1,15 @@
 <div class="col-md-5">
-  <div class="form-group">
-    <label for="usr">Title:</label>
-    <input type="text" [value]="model.title" placeholder="title" class="form-control">
-  </div>
-  <div class="form-group">
-    <label for="usr">Content:</label>
-    <input type="text" [value]="model.content" placeholder="content" class="form-control">
-  </div>
-  <div class="form-group">
-    <input type="button" class="form-control btn btn-primary" [value]="buttonText" (click)="submitClick()">
-  </div>
+  <form [formGroup]="form" (ngSubmit)="submitClick()">
+    <div class="form-group">
+      <label>Title:</label>
+      <input type="text"  formControlName="title" placeholder="title" class="form-control">
+    </div>
+    <div class="form-group">
+      <label >Content:</label>
+      <input type="text" formControlName="content" placeholder="content" class="form-control">
+    </div>
+    <div class="form-group">
+      <input type="submit" class="form-control btn btn-primary" [disabled]="!form.valid" [value]="buttonText">
+    </div>
+  </form>
 </div>
